@@ -1,0 +1,56 @@
+# Text Adventure Game
+# A simple text-based adventure game where the player explores rooms and makes choices.
+
+# Initialize the game environment
+current_room = "Hallway"
+game_over = False
+
+# Main game loop
+while not game_over:
+    # Display current location and prompt user for input
+    print(f"You are in the {current_room}.")
+    print("What do you want to do?")
+    print("1. Go to the Living Room")
+    print("2. Go to the Kitchen")
+    print("3. Go to the Garden")
+    print("4. Quit game")
+    
+    # Get user input
+    choice = input("Enter your choice (1-4): ")
+    
+    # Process user input
+    if choice == "1":
+        current_room = "Living Room"
+        print("You are now in the Living Room.")
+    elif choice == "2":
+        current_room = "Kitchen"
+        print("You are now in the Kitchen.")
+    elif choice == "3":
+        current_room = "Garden"
+        print("You are now in the Garden.")
+    elif choice == "4":
+        game_over = True
+        print("Game over. Thanks for playing!")
+    else:
+        print("Invalid choice. Please enter a number from 1 to 4.")
+
+# End of game loop
+
+
+"""
+EXPLANATION OF THE GAME
+
+The game starts in the "Hallway" and allows the player to move between rooms (Living Room, Kitchen, Garden) or quit the game by entering a number corresponding to their choice.
+Each room change updates the current_room variable and prints a message confirming the new location.
+The game continues until the player chooses to quit.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Lists: None directly used in this specific code snippet.
+Tuples: None used.
+Dictionaries: None used.
+Strings: Used extensively for room names, messages, and user prompts.
+"""
