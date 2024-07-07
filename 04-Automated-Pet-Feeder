@@ -1,0 +1,45 @@
+# Automated Pet Feeder
+# This program controls an automated pet feeder using a Raspberry Pi and a servo motor.
+
+import time  # Import the time module for time-related functions
+from datetime import datetime  # Import datetime module to work with dates and times
+
+# Define feeding schedule in 24-hour format (hours and minutes)
+feeding_times = [(8, 0), (17, 30)]  # Example: feed at 8:00 AM and 5:30 PM
+
+while True:
+    current_time = datetime.now().time()  # Get the current time
+
+    # Check if the current time matches any of the feeding times
+    for feeding_time in feeding_times:
+        if current_time.hour == feeding_time[0] and current_time.minute == feeding_time[1]:
+            print(f"Feeding pets at {current_time.hour}:{current_time.minute}")
+            # Add code here to activate the servo motor to dispense pet food
+            time.sleep(30)  # Wait for 30 seconds to allow pet to eat
+
+            # Once fed, break out of the loop to avoid multiple feedings at the same time
+            break
+    
+    # Wait for 1 minute before checking the time again
+    time.sleep(60)
+
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program continuously checks the current time.
+If the current time matches any of the predefined feeding times, it activates the servo motor to dispense pet food and waits for 30 seconds to simulate the feeding process.
+After feeding, it breaks out of the loop to prevent multiple feedings at the same scheduled time.
+It then waits for 1 minute before checking the time again.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Conditional Statements (if): Checks if the current time matches any of the feeding times.
+Loops (while): Continuously runs to monitor the current time and trigger feeding.
+Control Flow (break): Breaks out of the loop once feeding is done to avoid multiple feedings.
+Imports (time, datetime): Imports necessary modules (time for time-related functions and datetime for working with dates and times).
+"""
