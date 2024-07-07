@@ -1,0 +1,71 @@
+# Dice Rolling Simulator
+# Simulates rolling a dice and keeps track of statistics.
+
+import random  # Import the random module for generating random numbers
+
+rolls = []  # Initialize an empty list to store dice rolls
+
+while True:  # Start an infinite loop for rolling the dice
+    input("Press Enter to roll the dice...")  # Prompt the user to roll the dice by pressing Enter
+    
+    dice1 = random.randint(1, 6)  # Generate a random number between 1 and 6 for the first dice
+    dice2 = random.randint(1, 6)  # Generate a random number between 1 and 6 for the second dice
+    
+    roll = (dice1, dice2)  # Store the result of the dice roll as a tuple
+    rolls.append(roll)  # Add the roll to the list of rolls
+    
+    print(f"You rolled: {dice1}, {dice2}")  # Print the result of the dice roll
+    
+    again = input("Roll again? (yes/no): ")  # Ask the user if they want to roll again
+    
+    if again.lower() != "yes":  # Check if the user wants to stop rolling
+        break  # Exit the loop if the user does not want to roll again
+
+print("\n=== Dice Rolling Statistics ===")
+total_rolls = len(rolls)  # Calculate the total number of rolls
+print(f"Total rolls: {total_rolls}")
+
+# Calculate and print statistics based on the rolls
+doubles_count = sum(1 for d1, d2 in rolls if d1 == d2)
+print(f"Doubles rolled: {doubles_count} times")
+average_roll = sum(d1 + d2 for d1, d2 in rolls) / total_rolls
+print(f"Average roll: {average_roll:.2f}")
+
+# Count the frequency of each possible roll
+roll_counts = {}
+for d1, d2 in rolls:
+    if (d1, d2) in roll_counts:
+        roll_counts[(d1, d2)] += 1
+    else:
+        roll_counts[(d1, d2)] = 1
+
+print("\n=== Roll Frequency ===")
+for roll, count in roll_counts.items():
+    print(f"{roll}: {count} times")
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by importing the random module to generate random numbers.
+It initializes an empty list rolls to store the results of dice rolls.
+It enters an infinite loop (while True) where it prompts the user to press Enter to roll the dice.
+Inside the loop, it generates random numbers (dice1 and dice2) representing the results of rolling two dice.
+It stores each roll as a tuple (dice1, dice2) in the rolls list.
+After rolling, it prints the results of the dice roll.
+It asks the user if they want to roll again (again = input("Roll again? (yes/no): ")).
+If the user enters anything other than "yes", the loop breaks and the program proceeds to calculate and print statistics based on the rolls:
+Total number of rolls (total_rolls).
+Number of times doubles (both dice showing the same number) were rolled (doubles_count).
+Average of all dice rolls (average_roll).
+Frequency of each possible roll combination (roll_counts).
+"""
+
+
+"""
+NOTIONS COVERED
+
+Conditional Statements (if-else, if-elif): Used to check if the user wants to roll again and to break the loop accordingly.
+Loops (while): Used to repeatedly roll the dice until the user decides to stop.
+Control Flow (break): Used to exit the loop when the user does not want to roll again.
+"""
