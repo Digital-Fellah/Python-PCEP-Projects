@@ -1,0 +1,98 @@
+# Online Quiz System
+# This program allows users to take quizzes on various topics.
+
+# Function to retrieve quiz questions from a database or API
+def retrieve_quiz_questions(topic, difficulty='medium'):
+    """
+    Retrieves quiz questions based on the specified topic and difficulty level.
+
+    Parameters:
+    - topic (str): The topic of the quiz.
+    - difficulty (str, optional): Difficulty level of the quiz (default is 'medium').
+
+    Returns:
+    - list: A list of quiz questions formatted as dictionaries with 'question', 'options', and 'answer' keys.
+    """
+    # Placeholder code to simulate quiz questions retrieval
+    # In a real application, this would fetch questions from a database or external API
+    if topic == 'Python Basics' and difficulty == 'medium':
+        questions = [
+            {'question': 'What is the output of 2 + 3?', 'options': ['4', '5', '6', '7'], 'answer': '5'},
+            {'question': 'Which keyword is used to define a function?', 'options': ['def', 'function', 'define', 'fun'], 'answer': 'def'},
+            {'question': 'What does the 'in' operator do in Python?', 'options': ['Membership test', 'Bitwise AND', 'Logical OR', 'Bitwise NOT'], 'answer': 'Membership test'}
+        ]
+    else:
+        questions = []  # Return an empty list if no questions are found for the given topic and difficulty
+    return questions
+
+# Function to conduct the quiz and handle user interaction
+def conduct_quiz():
+    """
+    Conducts the quiz by presenting questions to the user and checking answers.
+
+    This function handles user inputs, presents questions, checks answers, and provides feedback.
+    """
+    topic = input("Enter the quiz topic: ")
+    difficulty = input("Enter the difficulty level (easy, medium, hard): ")
+    
+    # Retrieve quiz questions based on user input
+    quiz_questions = retrieve_quiz_questions(topic, difficulty)
+    
+    if not quiz_questions:
+        print("Sorry, no questions found for the specified topic and difficulty.")
+        return
+    
+    score = 0
+    total_questions = len(quiz_questions)
+    
+    # Iterate through each quiz question
+    for index, question in enumerate(quiz_questions, start=1):
+        print(f"Question {index}: {question['question']}")
+        for i, option in enumerate(question['options'], start=1):
+            print(f"{i}. {option}")
+        
+        # Get user's answer
+        while True:
+            try:
+                user_answer = input("Enter your answer (1, 2, 3, 4): ")
+                user_answer_index = int(user_answer) - 1  # Convert user's answer to index
+                if 0 <= user_answer_index < len(question['options']):
+                    break
+                else:
+                    print("Invalid input. Please enter a number from 1 to 4.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+        # Check if user's answer is correct
+        if question['options'][user_answer_index] == question['answer']:
+            print("Correct!")
+            score += 1
+        else:
+            print(f"Wrong! The correct answer is: {question['answer']}")
+
+    # Display final score
+    print(f"Quiz completed! Your score is {score} out of {total_questions}")
+
+# Main program execution
+if __name__ == "__main__":
+    conduct_quiz()
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by defining two functions: retrieve_quiz_questions and conduct_quiz.
+retrieve_quiz_questions simulates fetching quiz questions from a database or API based on user-specified topic and difficulty.
+conduct_quiz handles the entire quiz-taking process, from user input for topic and difficulty, to presenting questions, checking answers, and calculating the final score.
+The main program then executes the conduct_quiz function to start the quiz.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions: Defined functions retrieve_quiz_questions and conduct_quiz for specific tasks.
+Parameters vs. Arguments: Used parameters topic and difficulty in retrieve_quiz_questions function.
+Keyword and Mixed Argument Passing: Used keyword arguments in retrieve_quiz_questions function (difficulty='medium').
+Exception Handling: Implemented error handling for invalid inputs during quiz (try-except block).
+"""
