@@ -1,0 +1,80 @@
+# Automated Weather Report System
+# This program fetches weather data from the WeatherBit API and generates a report based on user input.
+
+import requests  # Importing the requests library to make HTTP requests
+
+def fetch_weather_data(location, api_key):
+    """
+    Function to fetch weather data from WeatherBit API.
+
+    Parameters:
+    - location: String, the location for which weather data is requested.
+    - api_key: String, API key for accessing the WeatherBit API.
+
+    Returns:
+    - weather_data: Dictionary containing weather information fetched from the API.
+    """
+    url = f'https://api.weatherbit.io/v2.0/current?key={api_key}&city={location}'
+    
+    try:
+        response = requests.get(url)  # Sending GET request to WeatherBit API
+        response.raise_for_status()  # Raise an exception for HTTP errors (e.g., 404, 500)
+        weather_data = response.json()  # Convert JSON response to Python dictionary
+        return weather_data  # Return weather data dictionary
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching weather data: {e}")
+        return None  # Return None if there's an error fetching data
+
+def generate_weather_report(weather_data):
+    """
+    Function to generate a weather report based on fetched weather data.
+
+    Parameters:
+    - weather_data: Dictionary containing weather information.
+
+    Returns:
+    - report: String, formatted weather report.
+    """
+    if weather_data is None:
+        return "Weather data not available."  # Return message if weather data is None
+
+    # Extract relevant weather information
+    temperature = weather_data['data'][0]['temp']
+    description = weather_data['data'][0]['weather']['description']
+    city_name = weather_data['data'][0]['city_name']
+
+    # Format the weather report
+    report = f"Current weather in {city_name}: {description}, Temperature: {temperature}°C"
+
+    return report  # Return the formatted weather report
+
+# Example usage:
+if __name__ == "__main__":
+    location = input("Enter city name: ")  # Prompt user to enter city name
+    api_key = 'your_api_key_here'  # Replace with your actual WeatherBit API key
+    weather_data = fetch_weather_data(location, api_key)  # Fetch weather data
+
+    if weather_data:
+        report = generate_weather_report(weather_data)  # Generate weather report
+        print(report)  # Print the generated weather report
+    else:
+        print("Failed to fetch weather data. Please check your input and try again.")
+
+
+"""
+EXPLANATION OF THE CODE
+
+fetch_weather_data Function:
+Makes an HTTP GET request to the WeatherBit API to fetch current weather data for a specified location.
+Handles exceptions using try-except blocks to manage potential errors like network issues or invalid API responses.
+Returns the fetched weather data as a Python dictionary.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions: Two main functions (fetch_weather_data and generate_weather_report) are defined to encapsulate specific tasks of fetching weather data and generating reports.
+Default Parameter Values: While not explicitly shown in the code, default parameter values could be used for the fetch_weather_data function to handle cases where the location or api_key are not provided.
+Exception Handling: Exception handling is used to manage potential errors during HTTP requests (requests.exceptions.RequestException) and when accessing elements of the weather data (KeyError if the expected structure of the API response changes).
+"""
