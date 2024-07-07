@@ -1,0 +1,77 @@
+# Inventory Management System
+# This program allows users to manage inventory items by adding, removing, and viewing them.
+
+# Initialize an empty dictionary to store inventory items
+inventory = {}
+
+# Function to add a new item to the inventory
+def add_item(item_name, quantity, price):
+    """Add a new item to the inventory."""
+    if item_name not in inventory:
+        inventory[item_name] = {'quantity': quantity, 'price': price}
+        print(f"{item_name} added to inventory.")
+    else:
+        print(f"{item_name} is already in inventory. Use update_item() to modify.")
+
+# Function to remove an item from the inventory
+def remove_item(item_name):
+    """Remove an item from the inventory."""
+    if item_name in inventory:
+        del inventory[item_name]
+        print(f"{item_name} removed from inventory.")
+    else:
+        print(f"{item_name} is not found in inventory.")
+
+# Function to update quantity of an existing item in the inventory
+def update_item(item_name, new_quantity):
+    """Update the quantity of an existing item in the inventory."""
+    if item_name in inventory:
+        inventory[item_name]['quantity'] = new_quantity
+        print(f"Quantity of {item_name} updated to {new_quantity}.")
+    else:
+        print(f"{item_name} is not found in inventory.")
+
+# Function to display the current inventory
+def display_inventory():
+    """Display all items in the inventory."""
+    if inventory:
+        print("Current Inventory:")
+        for item, details in inventory.items():
+            print(f"{item}: Quantity - {details['quantity']}, Price - ${details['price']} each")
+    else:
+        print("Inventory is empty.")
+
+# Example usage:
+add_item("Apple", 50, 1.5)
+add_item("Banana", 100, 0.75)
+add_item("Apple", 20, 1.5)  # Try to add a duplicate item
+update_item("Apple", 30)
+remove_item("Banana")
+display_inventory()
+
+
+"""
+
+EXPLANATION OF THE CODE
+
+Initialization: Initializes an empty dictionary inventory to store items where keys are item names and values are dictionaries containing quantity and price.
+add_item Function: Adds a new item to the inventory dictionary if it doesn't already exist, otherwise notifies the user that the item is already present.
+remove_item Function: Removes an item from the inventory if it exists, otherwise notifies the user that the item is not found.
+update_item Function: Updates the quantity of an existing item in the inventory if it exists, otherwise notifies the user that the item is not found.
+display_inventory Function: Prints out all items in the inventory along with their quantities and prices, or notifies the user if the inventory is empty.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Lists (none explicitly in the code, but conceptually in the idea of managing items).
+Dictionaries: Used extensively to store inventory items with keys (item names) and values (quantity and price).
+Building dictionaries: inventory dictionary is built to store inventory items.
+Indexing: Accessing items in inventory dictionary.
+Adding and removing keys: add_item and remove_item functions add and remove keys from inventory.
+Iterating through dictionaries: display_inventory function iterates through inventory to display items.
+Methods: Use of dictionary methods like items() to iterate through key-value pairs.
+Checking existence of keys: Checking if an item exists in inventory before adding, removing, or updating.
+keys(), items(), and values(): Not explicitly used in the code, but could be used for more complex operations.
+"""
