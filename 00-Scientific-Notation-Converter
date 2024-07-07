@@ -1,0 +1,56 @@
+# Scientific Notation Converter
+# This program converts numbers between different numeral systems
+# (binary, octal, decimal, hexadecimal) and represents them in scientific notation.
+
+# Function to convert a number to scientific notation
+def convert_to_scientific(number):
+    # Convert the number to scientific notation format
+    scientific_notation = "{:.2e}".format(number)
+    return scientific_notation
+
+# Main program
+if __name__ == "__main__":
+    # User input: number in decimal (base 10)
+    decimal_number = int(input("Enter a decimal number: "))
+    
+    # Convert decimal to binary, octal, and hexadecimal
+    binary_number = bin(decimal_number)
+    octal_number = oct(decimal_number)
+    hexadecimal_number = hex(decimal_number)
+    
+    # Display original number in scientific notation
+    print("Original number in scientific notation:")
+    print(convert_to_scientific(decimal_number))
+    print()
+    
+    # Display converted numbers in different numeral systems
+    print("Converted numbers:")
+    print(f"Binary: {binary_number}")
+    print(f"Octal: {octal_number}")
+    print(f"Hexadecimal: {hexadecimal_number}")
+
+
+"""
+EXPLANATION OF THE CODE
+
+User Input: Prompt the user to enter a decimal number.
+Conversion: Convert the entered decimal number into binary, octal, and hexadecimal formats.
+Scientific Notation: Convert the original decimal number into scientific notation format and display it.
+Display: Print out the original number in scientific notation and its conversions into binary, octal, and hexadecimal numeral systems.
+"""
+
+
+"""
+NOTIONS COVERED
+
+int() and input() functions for user input.
+bin(), oct(), and hex() functions for conversion between numeral systems.
+String formatting for scientific notation ("{:.2e}".format(number)).
+Variables (decimal_number, binary_number, octal_number, hexadecimal_number) for storing and manipulating data.
+Comments to explain code functionality.
+print() function for outputting results.
+Basic control flow (if __name__ == "__main__":) to control program execution.
+Naming conventions following PEP-8 guidelines.
+Literal types: integers (decimal, binary, octal, hexadecimal).
+Type casting (int() function to convert input to integer).
+"""
