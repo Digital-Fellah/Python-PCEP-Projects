@@ -1,0 +1,60 @@
+# Interactive Quiz Game
+# This program implements a simple quiz game where questions are displayed
+# on an Arduino-compatible display and users can answer using buttons.
+
+import random  # Import the random module for shuffling questions
+
+# Define quiz questions and answers as a list of tuples
+questions = [
+    ("What is the capital of France?", ["Paris"]),
+    ("Who wrote 'Harry Potter' series?", ["JK Rowling"]),
+    ("What is the largest planet in our solar system?", ["Jupiter"]),
+    ("Which country is famous for kangaroos?", ["Australia"]),
+    ("How many continents are there?", ["7"]),
+]
+
+random.shuffle(questions)  # Shuffle the questions for randomness
+
+score = 0  # Initialize the score counter
+
+# Loop through each question in the shuffled list
+for question, correct_answers in questions:
+    print(question)  # Display the current question
+    user_answer = input("Your answer: ").strip()  # Prompt user for an answer
+
+    # Check if the user's answer is correct
+    if user_answer.lower() in map(str.lower, correct_answers):
+        print("Correct!\n")
+        score += 1  # Increment score if answer is correct
+    else:
+        print(f"Wrong. The correct answer is: {', '.join(correct_answers)}\n")
+
+print(f"Quiz ended. Your score is: {score}/{len(questions)}")
+
+# End of the program
+
+
+"""
+EXPLANATION OF THE CODE
+
+Initialization: The program starts by importing the random module and defining a list of quiz questions and their corresponding correct answers.
+Shuffling: The questions list is shuffled using random.shuffle() to randomize the order of questions for each game session.
+Quiz Loop: The main loop iterates through each question-answer pair in questions.
+Each question is printed on the display using print().
+The user is prompted to input their answer using input().
+The user's answer is checked against the correct answers using a conditional statement (if).
+If the answer is correct, the program prints "Correct!" and increments the score.
+If the answer is incorrect, the program prints the correct answer(s).
+End of Quiz: After all questions have been asked and answered, the program prints the final score.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Conditional Statements (if-else): Used to check if the user's answer is correct and provide appropriate feedback.
+Loops (for): Used to iterate through each question in the questions list.
+Iterating through sequences: The for loop iterates through the questions list to display each question sequentially.
+Control Flow (break): No break statements are used in this specific implementation.
+Importing Modules: Imported the random module for shuffling the questions.
+"""
