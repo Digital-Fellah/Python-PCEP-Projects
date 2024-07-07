@@ -1,0 +1,81 @@
+# Book Catalog
+# This program allows users to manage a catalog of books.
+
+# Initialize an empty list to store books. Each book will be represented as a tuple.
+catalog = []
+
+# Function to add a new book to the catalog.
+def add_book(title, author, genre, year):
+    """Add a new book to the catalog."""
+    new_book = (title, author, genre, year)  # Create a tuple with book details.
+    catalog.append(new_book)  # Append the tuple to the catalog list.
+
+# Function to search for a book by title.
+def find_book(title):
+    """Search for a book by title."""
+    for book in catalog:
+        if book[0] == title:  # Check if the first element of the tuple (title) matches.
+            return book  # Return the book tuple if found.
+    return None  # Return None if book is not found.
+
+# Function to display all books in the catalog.
+def display_books():
+    """Display all books in the catalog."""
+    if not catalog:
+        print("The catalog is empty.")  # Print message if catalog is empty.
+    else:
+        print("Catalog:")
+        for i, book in enumerate(catalog, 1):
+            print(f"{i}. Title: {book[0]}, Author: {book[1]}, Genre: {book[2]}, Year: {book[3]}")
+            # Print each book's details.
+
+# Adding sample books to the catalog.
+add_book("The Hobbit", "J.R.R. Tolkien", "Fantasy", 1937)
+add_book("To Kill a Mockingbird", "Harper Lee", "Fiction", 1960)
+add_book("1984", "George Orwell", "Dystopian", 1949)
+
+# Display all books in the catalog.
+display_books()
+
+# Searching for a book by title.
+search_title = "1984"
+found_book = find_book(search_title)
+if found_book:
+    print(f"Book found: {found_book[0]}, by {found_book[1]}")
+else:
+    print(f"Book '{search_title}' not found.")
+
+# Adding a new book to the catalog.
+add_book("The Catcher in the Rye", "J.D. Salinger", "Fiction", 1951)
+
+# Display updated catalog.
+display_books()
+
+
+"""
+EXPLANATION OF THE CODE
+
+The code begins by initializing an empty list catalog to store books, with each book represented as a tuple containing details like title, author, genre, and year.
+Three functions are defined: add_book, find_book, and display_books.
+add_book function adds a new book to the catalog list as a tuple.
+find_book function searches for a book by its title within the catalog.
+display_books function prints out all the books currently stored in the catalog, showing their details.
+Sample books are added using add_book.
+The display_books function is called to show all books in the catalog.
+A specific book ("1984") is searched for using find_book, and the result is printed.
+Another book ("The Catcher in the Rye") is added to the catalog using add_book.
+Finally, the display_books function is called again to show the updated catalog.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Lists (to store books in the catalog list).
+Tuples (to represent each book as a tuple with details).
+Indexing (accessing elements within tuples and lists).
+Functions (to encapsulate operations like adding, finding, and displaying books).
+Append method (to add new books to the catalog list).
+Iterating through lists (using for loop in display_books function).
+String formatting (used in display_books function to neatly print book details).
+"""
