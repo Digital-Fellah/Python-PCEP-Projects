@@ -1,0 +1,54 @@
+# Recipe Recommender
+# This program recommends recipes based on user preferences such as dietary restrictions and cuisine.
+
+# Function to recommend recipes based on user preferences
+def recommend_recipe(preferred_cuisine='any', dietary_restrictions=None):
+    # Database of sample recipes (in a real application, this would be fetched from a database or API)
+    recipes = [
+        {'name': 'Spaghetti Carbonara', 'cuisine': 'Italian', 'ingredients': ['pasta', 'eggs', 'cheese', 'pancetta']},
+        {'name': 'Chicken Stir-Fry', 'cuisine': 'Chinese', 'ingredients': ['chicken', 'vegetables', 'soy sauce', 'rice']},
+        {'name': 'Greek Salad', 'cuisine': 'Greek', 'ingredients': ['cucumber', 'tomato', 'feta cheese', 'olives']},
+        {'name': 'Vegetable Curry', 'cuisine': 'Indian', 'ingredients': ['vegetables', 'curry paste', 'coconut milk', 'rice']},
+        {'name': 'Tofu Tacos', 'cuisine': 'Mexican', 'ingredients': ['tofu', 'tortillas', 'salsa', 'avocado']}
+    ]
+
+    # Filter recipes based on preferred cuisine
+    if preferred_cuisine != 'any':
+        recommended_recipes = [recipe for recipe in recipes if recipe['cuisine'] == preferred_cuisine]
+    else:
+        recommended_recipes = recipes  # Return all recipes if no specific cuisine preference
+
+    # Filter recipes based on dietary restrictions
+    if dietary_restrictions:
+        recommended_recipes = [recipe for recipe in recommended_recipes if not any(item in recipe['ingredients'] for item in dietary_restrictions)]
+
+    return recommended_recipes
+
+# Example usage:
+# Recommended recipes for a user who prefers Italian cuisine and is allergic to cheese
+recommendations = recommend_recipe(preferred_cuisine='Italian', dietary_restrictions=['cheese'])
+print("Recommended Recipes:")
+for recipe in recommendations:
+    print(recipe['name'])
+
+
+
+"""
+EXPLANATION OF THE CODE
+
+Function Definition: The recommend_recipe function is defined to recommend recipes based on user preferences.
+Recipe Database: A sample database (recipes list) is provided with mock recipes and their attributes.
+Filtering Recipes: Recipes are filtered based on user preferences for cuisine and dietary restrictions using list comprehensions.
+Return: The function returns a list of recommended recipes that match the user's criteria.
+Example Usage: An example is shown where the function is called with specific parameters and the recommended recipes are printed.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions: Defined a function recommend_recipe to encapsulate the logic of recommending recipes based on user preferences.
+Parameters vs. Arguments: Used parameters (preferred_cuisine and dietary_restrictions) to pass user preferences into the function.
+Default Parameter Values: Provided a default value ('any') for the preferred_cuisine parameter.
+Global Keyword: Although not explicitly used in this code snippet, the concept is implied in managing the recipes data structure globally within the function.
+"""
