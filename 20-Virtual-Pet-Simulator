@@ -1,0 +1,65 @@
+# Virtual Pet Simulator
+# Simulates interaction with a virtual pet, allowing feeding, playing, and monitoring of health.
+
+# Define the virtual pet class
+class VirtualPet:
+    def __init__(self, name):
+        self.name = name  # Initialize the pet's name
+        self.hunger = 50  # Default hunger level
+        self.happiness = 50  # Default happiness level
+
+    def feed(self):
+        """Feed the virtual pet."""
+        if self.hunger > 0:
+            self.hunger -= 10  # Decrease hunger level by 10
+            print(f"{self.name} is fed. Hunger decreased.")
+        else:
+            print(f"{self.name} is not hungry right now.")
+
+    def play(self):
+        """Play with the virtual pet."""
+        if self.happiness < 100:
+            self.happiness += 10  # Increase happiness level by 10
+            print(f"{self.name} is happy. Happiness increased.")
+        else:
+            print(f"{self.name} is already very happy.")
+
+    def check_health(self):
+        """Check the virtual pet's health."""
+        if self.hunger >= 70:
+            print(f"{self.name} is hungry. Please feed {self.name}.")
+        if self.happiness <= 30:
+            print(f"{self.name} is unhappy. Spend some time playing with {self.name}.")
+        if self.hunger < 70 and self.happiness > 30:
+            print(f"{self.name} is healthy and happy.")
+
+# Create a virtual pet instance named "Fluffy"
+pet = VirtualPet("Fluffy")
+
+# Simulate interaction with the virtual pet
+pet.feed()  # Feed the pet
+pet.play()  # Play with the pet
+pet.check_health()  # Check the pet's health
+
+
+"""
+EXPLANATION OF THE CODE
+
+VirtualPet Class: Defines a class VirtualPet that represents a virtual pet with attributes like name, hunger level (hunger), and happiness level (happiness).
+init Method: Initializes a new virtual pet with default values for hunger and happiness.
+feed Method: Decreases the pet's hunger level by 10 units if it's above 0. Prints a message indicating if the pet is fed or not hungry.
+play Method: Increases the pet's happiness level by 10 units if it's below 100. Prints a message indicating if the pet is happy or already very happy.
+check_health Method: Checks the pet's hunger and happiness levels and prints corresponding messages about the pet's health status.
+pet Instance: Creates an instance of VirtualPet named "Fluffy".
+Interaction Simulation: Feeds the pet, plays with the pet, and checks the pet's health status using defined methods.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions: Defined methods (feed, play, check_health) encapsulate specific behaviors of the virtual pet.
+Default Parameter Values: Default values set for hunger and happiness in the __init__ method.
+Exception Handling: Although not explicitly demonstrated in this simplified example, exception handling would be necessary to manage unexpected inputs or errors during interaction.
+Global Keyword: No global variables are used in this example as everything is encapsulated within the class scope.
+"""
