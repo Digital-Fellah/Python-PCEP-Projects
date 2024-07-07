@@ -1,0 +1,69 @@
+# Smart Plant Watering System
+# This program reads moisture levels from sensors and waters plants accordingly.
+
+import time
+
+# Define thresholds for moisture levels (example values)
+moisture_threshold_low = 30
+moisture_threshold_high = 70
+
+# Simulated moisture sensor function (replace with actual sensor reading)
+def read_moisture_sensor():
+    # Simulate reading moisture level (example: random number between 0 and 100)
+    import random
+    return random.randint(0, 100)
+
+# Main loop to monitor and water plants
+while True:
+    # Read moisture level from sensor
+    moisture_level = read_moisture_sensor()
+
+    # Check if moisture level is below the low threshold
+    if moisture_level < moisture_threshold_low:
+        print("Moisture level is low. Starting watering...")
+        # Simulate watering plants (replace with actual watering mechanism)
+        print("Watering plants...")
+        time.sleep(5)  # Simulate watering time of 5 seconds
+        print("Watering completed.")
+
+    # Check if moisture level is above the high threshold
+    elif moisture_level > moisture_threshold_high:
+        print("Moisture level is high. No watering needed.")
+
+    # If moisture level is within optimal range
+    else:
+        print("Moisture level is optimal. No action needed.")
+
+    # Wait for a period of time before checking again (e.g., every 30 minutes)
+    print("Waiting for next check...")
+    time.sleep(1800)  # Wait for 30 minutes (1800 seconds)
+
+    # Repeat loop to continuously monitor and water plants
+
+
+"""
+EXPLANATION OF THE CODE
+
+Introduction: This Python program simulates a smart plant watering system using conditional statements and loops.
+Moisture Thresholds: Defines low and high moisture thresholds to decide when to water plants or not.
+Simulated Moisture Sensor: Function read_moisture_sensor() simulates reading moisture levels from sensors (replace with actual sensor readings in real implementation).
+Main Loop (while True): Continuously monitors moisture levels and controls watering accordingly.
+Conditional Statements (if, elif, else):
+Checks if moisture level is below low threshold to initiate watering.
+Checks if moisture level is above high threshold to skip watering.
+Handles optimal moisture range with no action needed.
+Time Delay (time.sleep()): Delays program execution to simulate checking and watering intervals.
+Print Statements: Provides feedback messages to indicate system actions (e.g., watering, waiting).
+"""
+
+
+"""
+NOTIONS COVERED
+
+Conditional Statements: if, elif, else used to make decisions based on moisture levels.
+Loops: while True loop to continuously monitor and water plants.
+Functions: Defining and using read_moisture_sensor() function.
+Simulating Sensor Readings: Generating random numbers to simulate sensor data.
+Control Flow: Using if, elif, else to control the flow of the program based on conditions.
+Delaying Execution: time.sleep() to introduce delays between checks and actions.
+"""
