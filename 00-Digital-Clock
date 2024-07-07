@@ -1,0 +1,43 @@
+# Digital Clock
+# This program creates a digital clock that displays the current time and allows setting alarms.
+
+import time  # Import the time module for time-related functions
+
+def digital_clock():
+    """Function to display the current time continuously"""
+    while True:
+        current_time = time.strftime("%H:%M:%S")  # Get the current time in HH:MM:SS format
+        print(current_time, end="\r")  # Print the current time and overwrite the previous output
+        time.sleep(1)  # Wait for 1 second
+
+# Start the digital clock
+digital_clock()
+
+
+"""
+EXPLANATION OF THE CODE
+
+The code imports the time module, which provides various time-related functions and constants in Python.
+It defines a function digital_clock() that continuously displays the current time in hours, minutes, and seconds format (HH:MM:SS).
+Inside the function, there is an infinite loop (while True:) that runs continuously until stopped.
+Within the loop, time.strftime("%H:%M:%S") retrieves the current time formatted as hours, minutes, and seconds.
+print(current_time, end="\r") prints the current time to the console, using "\r" to overwrite the previous output, creating the illusion of a continuously updating digital clock.
+time.sleep(1) pauses the program for 1 second before repeating the loop, ensuring the clock updates once per second.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Interpreting and the interpreter: The Python interpreter executes the code continuously, updating the time display.
+Lexis, syntax, and semantics: The code uses correct syntax and semantics for Python functions and time-related operations.
+Keywords: import, def, while, True, print, time.sleep
+Instructions: Function definition (def), loop (while True:), function call (digital_clock())
+Indentation: Correct indentation ensures the loop and function are properly structured.
+Comments: Comments are used to explain the purpose of the function and clarify steps within the code.
+Literals: Time literals ("%H:%M:%S") for formatting the time.
+Variables: current_time stores the formatted time.
+Naming conventions: Follows PEP-8 guidelines (e.g., digital_clock, current_time).
+Input/output console operations: Uses print() function to display time.
+sep= and end= keyword parameters: Uses end="\r" to overwrite the previous output.
+"""
