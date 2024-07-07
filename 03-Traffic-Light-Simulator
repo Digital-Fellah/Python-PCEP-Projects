@@ -1,0 +1,66 @@
+# Traffic Light Simulator
+# Simulates a traffic light system with red, yellow, and green lights using LEDs.
+
+import time
+import RPi.GPIO as GPIO
+
+# GPIO pins for red, yellow, and green LEDs
+red_pin = 17
+yellow_pin = 27
+green_pin = 22
+
+# Setup GPIO mode and pins
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(red_pin, GPIO.OUT)
+GPIO.setup(yellow_pin, GPIO.OUT)
+GPIO.setup(green_pin, GPIO.OUT)
+
+try:
+    while True:
+        # Red light
+        GPIO.output(red_pin, GPIO.HIGH)
+        GPIO.output(yellow_pin, GPIO.LOW)
+        GPIO.output(green_pin, GPIO.LOW)
+        print("Red light ON")
+        time.sleep(5)  # Red light stays on for 5 seconds
+        
+        # Green light
+        GPIO.output(red_pin, GPIO.LOW)
+        GPIO.output(yellow_pin, GPIO.LOW)
+        GPIO.output(green_pin, GPIO.HIGH)
+        print("Green light ON")
+        time.sleep(5)  # Green light stays on for 5 seconds
+        
+        # Yellow light (transition)
+        GPIO.output(red_pin, GPIO.LOW)
+        GPIO.output(yellow_pin, GPIO.HIGH)
+        GPIO.output(green_pin, GPIO.LOW)
+        print("Yellow light ON")
+        time.sleep(2)  # Yellow light stays on for 2 seconds
+
+except KeyboardInterrupt:
+    print("Traffic light simulator stopped by user")
+finally:
+    # Cleanup GPIO settings
+    GPIO.cleanup()
+
+
+"""
+EXPLANATION OF THE CODE
+
+The code simulates a traffic light system with red, yellow, and green lights using LEDs connected to GPIO pins on a Raspberry Pi.
+It sets up the GPIO pins for red, yellow, and green LEDs and initializes them.
+The program enters an infinite loop (while True) to continuously cycle through the traffic light phases: red -> green -> yellow -> red.
+Each phase is controlled by setting the appropriate GPIO output to HIGH (on) or LOW (off) and printing a message indicating which light is currently on.
+The time.sleep() function pauses the program execution for a specified number of seconds to simulate each light's duration.
+The loop continues indefinitely until the user interrupts it (KeyboardInterrupt), at which point it cleans up GPIO settings and exits gracefully.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Conditional Statements (if-else): Used implicitly to control which LEDs are turned on based on the traffic light phase.
+Loops (while): Utilized to continuously cycle through the traffic light phases.
+Control Flow (break, continue): Not explicitly used in this code but conceptually part of controlling the flow of the traffic light sequence.
+"""
