@@ -1,0 +1,81 @@
+# Treasure Hunt Game
+# This program simulates a treasure hunt game where the player navigates through a grid to find hidden treasure.
+
+import random
+
+def create_map(size):
+    """Create a random grid map of the specified size."""
+    grid = [[' ' for _ in range(size)] for _ in range(size)]  # Initialize grid with empty spaces
+    treasure_row = random.randint(0, size - 1)
+    treasure_col = random.randint(0, size - 1)
+    grid[treasure_row][treasure_col] = 'T'  # Place treasure at a random location
+    return grid, treasure_row, treasure_col
+
+def print_map(grid):
+    """Print the grid map."""
+    print("Map:")
+    for row in grid:
+        print(' '.join(row))
+
+def move_player(grid, row, col, move):
+    """Move the player within the grid based on user input."""
+    if move == 'up' and row > 0:
+        row -= 1
+    elif move == 'down' and row < len(grid) - 1:
+        row += 1
+    elif move == 'left' and col > 0:
+        col -= 1
+    elif move == 'right' and col < len(grid) - 1:
+        col += 1
+    return row, col
+
+def check_treasure(grid, row, col, treasure_row, treasure_col):
+    """Check if the player has found the treasure."""
+    if row == treasure_row and col == treasure_col:
+        return True
+    return False
+
+# Main game loop
+size = 5  # Size of the grid
+grid, treasure_row, treasure_col = create_map(size)
+player_row = random.randint(0, size - 1)
+player_col = random.randint(0, size - 1)
+
+print("Welcome to the Treasure Hunt Game!")
+print("Find the treasure 'T' on the map.")
+print_map(grid)
+
+while True:
+    print(f"You are currently at position ({player_row}, {player_col}).")
+    move = input("Enter your move (up, down, left, right): ").lower()
+
+    try:
+        player_row, player_col = move_player(grid, player_row, player_col, move)
+    except IndexError:
+        print("Invalid move! Please try again.")
+        continue
+
+    if check_treasure(grid, player_row, player_col, treasure_row, treasure_col):
+        print("Congratulations! You found the treasure!")
+        break
+
+print_map(grid)
+
+
+"""
+EXPLANATION OF THE CODE
+
+Creating the Map: The create_map function initializes a grid of a specified size and randomly places a treasure ('T') somewhere on the grid.
+Printing the Map: The print_map function displays the current state of the grid to the player, showing their current position and the location of the treasure.
+Moving the Player: The move_player function handles player movement within the grid based on user input ('up', 'down', 'left', 'right').
+Checking for Treasure: The check_treasure function determines if the player's current position matches the location of the treasure.
+"""
+
+
+"""
+Functions and Generators: Functions (create_map, print_map, move_player, check_treasure) are defined to encapsulate specific tasks. The map creation involves generating a random grid.
+Recursion: Not explicitly used in this project.
+The Return Keyword: Used to return values from functions (create_map, move_player, check_treasure).
+The None Keyword: Not explicitly used in this project.
+Exception Handling: Implemented to catch IndexError when the player tries to move out of bounds of the grid.
+"""
