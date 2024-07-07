@@ -1,0 +1,50 @@
+# Logic Puzzle Solver
+# This program solves a simple logic puzzle where the user provides inputs and the program determines the correct solution.
+
+# Define a function to solve the logic puzzle
+def solve_puzzle():
+    # Prompt the user for inputs
+    print("Enter values for variables A and B (True or False):")
+    A = input("A = ").lower()  # Get user input for variable A and convert to lowercase
+    B = input("B = ").lower()  # Get user input for variable B and convert to lowercase
+    
+    # Evaluate the logic puzzle based on user inputs
+    if A == 'true' and B == 'true':
+        print("Both A and B are true.")
+    elif A == 'true' and B == 'false':
+        print("A is true and B is false.")
+    elif A == 'false' and B == 'true':
+        print("A is false and B is true.")
+    else:
+        print("Both A and B are false.")
+
+# Call the function to solve the puzzle
+solve_puzzle()
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program prompts the user to enter values for two variables, A and B.
+It then evaluates the inputs to determine which combination of truth values (True or False) corresponds to the user's inputs.
+Based on the combination of inputs, it prints a message indicating the logical relationship between A and B.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Interpreting and the interpreter: The program executes line by line, interpreting user inputs and logic.
+Lexis, syntax, and semantics: The program uses correct Python syntax to define functions, print statements, and conditional statements.
+Keywords: Keywords like def, print, input, if, elif, and else are used.
+Instructions: Instructions are defined using print() for output and input() for user input.
+Indentation: Correct indentation is used to structure the code inside the function and conditional statements.
+Comments: Comments are used to explain the purpose of the program and each step within the function.
+Literals: Boolean literals (True and False) are used to evaluate conditions.
+Variables: Variables (A and B) store user inputs and intermediate values.
+Naming conventions: Variable names (A and B) follow the PEP-8 guidelines for naming.
+Boolean operators: and is used to combine conditions (A == 'true' and B == 'true', etc.).
+Relational operators: == is used to compare user inputs (A == 'true', etc.).
+Boolean expressions: Evaluate conditions (if A == 'true' and B == 'true':).
+Input/output console operations: Use print() for displaying messages and input() for receiving user input.
+"""
