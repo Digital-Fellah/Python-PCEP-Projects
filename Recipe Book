@@ -1,0 +1,71 @@
+# Recipe Book Program
+# This program allows users to manage their recipes by adding, viewing, and searching recipes.
+
+# Initialize an empty list to store recipes
+recipes = []
+
+# Function to add a new recipe to the recipe book
+def add_recipe():
+    print("Adding a new recipe...")
+    title = input("Enter the recipe title: ")
+    ingredients = input("Enter the ingredients (comma-separated): ").split(',')
+    instructions = input("Enter the cooking instructions: ")
+    recipe = (title, ingredients, instructions)  # Create a tuple for the recipe
+    recipes.append(recipe)  # Add the recipe tuple to the recipes list
+    print(f"Recipe '{title}' added successfully!\n")
+
+# Function to view all recipes in the recipe book
+def view_recipes():
+    print("Viewing all recipes...\n")
+    for idx, recipe in enumerate(recipes, start=1):  # Enumerate recipes with index starting from 1
+        print(f"Recipe {idx}:")
+        print(f"Title: {recipe[0]}")
+        print(f"Ingredients: {', '.join(recipe[1])}")
+        print(f"Instructions: {recipe[2]}\n")
+
+# Main program loop
+while True:
+    print("Recipe Book Menu:")
+    print("1. Add a new recipe")
+    print("2. View all recipes")
+    print("3. Exit")
+    choice = input("Enter your choice (1/2/3): ")
+    
+    if choice == '1':
+        add_recipe()
+    elif choice == '2':
+        view_recipes()
+    elif choice == '3':
+        print("Exiting the Recipe Book. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter 1, 2, or 3.\n")
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by initializing an empty list recipes to store recipe information.
+It defines two main functions:
+add_recipe(): Prompts the user to input a recipe title, ingredients (comma-separated), and cooking instructions. It then creates a tuple for the recipe and adds it to the recipes list.
+view_recipes(): Prints out all the recipes currently stored in the recipes list. It iterates through each recipe tuple, extracts and prints the title, ingredients, and instructions.
+The main program runs in a loop (while True) to continuously display a menu:
+Users can choose to add a new recipe (1), view all recipes (2), or exit the program (3).
+Input validation ensures that only valid choices (1, 2, or 3) are accepted.
+The program exits when the user selects option 3.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Lists: Used to store recipes (recipes list).
+Tuples: Each recipe is stored as a tuple (recipe tuple containing title, ingredients list, and instructions).
+Indexing and Slicing: Accessing elements within the recipe tuple (recipe[0], recipe[1], recipe[2]).
+List Methods: append() (to add a recipe to recipes), split() (to separate input ingredients into a list).
+Iterating through Lists: Looping through recipes to display each recipe.
+Nested Lists (implicitly covered): Ingredients are stored as a list inside each recipe tuple.
+Functions: add_recipe() and view_recipes() are defined and called to perform specific tasks.
+User Input: Captures user choices and inputs (input() function).
+Printing Output: Displays menu options and recipe details (print() function).
+"""
