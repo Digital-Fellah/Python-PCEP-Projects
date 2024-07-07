@@ -1,0 +1,65 @@
+# Personal Budget Planner
+# This program helps users plan their monthly budget by calculating income, expenses,
+# and savings goals.
+
+# Function to calculate monthly budget
+def calculate_budget(income, expenses, savings_goal=0):
+    """
+    Calculates the monthly budget based on income, expenses, and savings goal.
+
+    Parameters:
+    - income (float): Total monthly income.
+    - expenses (float): Total monthly expenses.
+    - savings_goal (float, optional): Savings goal for the month (default is 0).
+
+    Returns:
+    - float: Remaining budget after deducting expenses and savings goal from income.
+    """
+    total_expenses = expenses + savings_goal
+    remaining_budget = income - total_expenses
+    return remaining_budget
+
+# Exception handling for budget calculation
+try:
+    # Input income from user
+    income = float(input("Enter your total monthly income: "))
+
+    # Input expenses from user
+    expenses = float(input("Enter your total monthly expenses: "))
+
+    # Input savings goal from user
+    savings_goal = float(input("Enter your savings goal for the month (optional, press Enter to skip): "))
+
+    # Calculate budget using defined function
+    remaining_budget = calculate_budget(income, expenses, savings_goal)
+
+    # Output the remaining budget
+    print(f"Your remaining budget for the month is: {remaining_budget:.2f}")
+
+except ValueError:
+    # Handle ValueError if non-numeric input is entered
+    print("Error: Please enter a valid number for income, expenses, and savings goal.")
+
+except Exception as e:
+    # Handle any other unexpected exceptions
+    print(f"An error occurred: {str(e)}")
+
+
+"""
+EXPLANATION OF THE CODE
+
+The code begins by defining a function calculate_budget which takes parameters for income, expenses, and an optional savings goal. It calculates the remaining budget after deducting expenses and savings goal from income.
+The main part of the code handles user inputs for income, expenses, and savings goal using input() functions, converts them to floats, and then calls the calculate_budget function.
+Exception handling (try-except) is used to manage potential errors:
+If the user enters non-numeric values for income, expenses, or savings goal, a ValueError is caught and an appropriate error message is displayed.
+Any other unexpected errors are caught by the generic Exception handler and the error message is printed.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions: Defining and using calculate_budget function to encapsulate budget calculation logic.
+Default Parameter Values: Setting a default value (0) for the savings_goal parameter in the calculate_budget function.
+Exception Handling: Using try-except blocks to handle potential errors during user input or budget calculation.
+"""
