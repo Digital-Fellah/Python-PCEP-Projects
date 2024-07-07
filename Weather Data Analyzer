@@ -1,0 +1,62 @@
+# Weather Data Analyzer
+# This program allows users to collect daily weather data and analyze it.
+
+# Initialize an empty list to store daily temperature data
+daily_temperatures = []
+
+# Function to add a new day's temperature to the list
+def add_temperature(day, temperature):
+    daily_temperatures.append((day, temperature))  # Append a tuple (day, temperature)
+
+# Function to calculate and return the average temperature
+def average_temperature():
+    if not daily_temperatures:
+        return None  # Return None if list is empty
+    total_temp = sum(temp for day, temp in daily_temperatures)
+    return total_temp / len(daily_temperatures)
+
+# Function to find and return the highest temperature recorded
+def highest_temperature():
+    if not daily_temperatures:
+        return None  # Return None if list is empty
+    return max(temp for day, temp in daily_temperatures)
+
+# Function to find and return the lowest temperature recorded
+def lowest_temperature():
+    if not daily_temperatures:
+        return None  # Return None if list is empty
+    return min(temp for day, temp in daily_temperatures)
+
+# Example usage:
+add_temperature("2024-07-01", 28.5)
+add_temperature("2024-07-02", 30.0)
+add_temperature("2024-07-03", 27.8)
+
+print("Average temperature:", average_temperature())
+print("Highest temperature:", highest_temperature())
+print("Lowest temperature:", lowest_temperature())
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by initializing an empty list daily_temperatures to store tuples of day and temperature.
+Three functions (add_temperature, average_temperature, highest_temperature, lowest_temperature) are defined to handle different aspects of weather data management.
+add_temperature(day, temperature) adds a new day's temperature to the list as a tuple.
+average_temperature() calculates and returns the average temperature from the recorded data.
+highest_temperature() finds and returns the highest temperature recorded.
+lowest_temperature() finds and returns the lowest temperature recorded.
+Example data is added using add_temperature() for three consecutive days.
+Finally, the calculated average, highest, and lowest temperatures are printed.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Lists: Used to store daily temperatures as tuples.
+Tuples: Each day's temperature is stored as a tuple (day, temperature).
+Functions: Defined functions (add_temperature, average_temperature, highest_temperature, lowest_temperature) to encapsulate tasks.
+Indexing: Accessing elements (temperature) from tuples.
+Iterating with loops: Used implicitly in functions like average_temperature, highest_temperature, and lowest_temperature to iterate over the list of temperatures.
+"""
