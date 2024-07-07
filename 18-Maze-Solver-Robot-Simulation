@@ -1,0 +1,119 @@
+# Maze Solver Robot Simulation
+# This program simulates a robot navigating through a maze to find the goal.
+
+# Define the maze as a 2D list where 0 represents open space and 1 represents walls.
+maze = [
+    [0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 1, 0]
+]
+
+# Global variables to store maze dimensions and robot position.
+maze_height = len(maze)
+maze_width = len(maze[0])
+start = (0, 0)  # Starting position of the robot
+goal = (maze_height-1, maze_width-1)  # Goal position in the maze
+
+def move_robot(current_position, direction):
+    """
+    Move the robot in the maze based on the given direction.
+
+    Args:
+    current_position (tuple): Current position (row, column) of the robot.
+    direction (str): Direction to move ('up', 'down', 'left', 'right').
+
+    Returns:
+    tuple: New position (row, column) after moving in the specified direction.
+    """
+    row, col = current_position
+
+    if direction == 'up':
+        new_position = (row - 1, col)
+    elif direction == 'down':
+        new_position = (row + 1, col)
+    elif direction == 'left':
+        new_position = (row, col - 1)
+    elif direction == 'right':
+        new_position = (row, col + 1)
+    else:
+        # Handle unexpected direction gracefully
+        print(f"Invalid direction: {direction}. Robot stays in the current position.")
+        new_position = (row, col)
+
+    return new_position
+
+def is_valid_move(position):
+    """
+    Check if the robot can move to the given position.
+
+    Args:
+    position (tuple): Position (row, column) to check.
+
+    Returns:
+    bool: True if the move is valid (within bounds and not hitting a wall), False otherwise.
+    """
+    row, col = position
+
+    # Check if the position is within maze boundaries
+    if 0 <= row < maze_height and 0 <= col < maze_width:
+        # Check if the position is not a wall (1 represents a wall)
+        if maze[row][col] == 0:
+            return True
+    return False
+
+def solve_maze(current_position):
+    """
+    Recursively solve the maze using depth-first search.
+
+    Args:
+    current_position (tuple): Current position (row, column) of the robot.
+
+    Returns:
+    bool: True if the robot reaches the goal, False otherwise.
+    """
+    # Base case: If current position is the goal, return True
+    if current_position == goal:
+        return True
+
+    # Explore all possible directions (up, down, left, right)
+    for direction in ['up', 'down', 'left', 'right']:
+        new_position = move_robot(current_position, direction)
+
+        # Check if the new position is valid and not visited yet
+        if is_valid_move(new_position):
+            # Mark the current position as visited (optional in this simulation)
+            maze[current_position[0]][current_position[1]] = 2  # Mark as visited
+
+            # Recursively try to solve from the new position
+            if solve_maze(new_position):
+                return True
+
+    return False
+
+# Start solving the maze from the initial position
+if solve_maze(start):
+    print("The maze has a solution!")
+else:
+    print("No solution found for the maze.")
+
+
+"""
+EXPLANATION OF THE CODE
+
+Define Maze: Sets up a 2D list representing the maze where 0 is an open space and 1 is a wall.
+Global Variables: Defines global variables for maze dimensions, start position, and goal position.
+move_robot Function: Moves the robot in the maze based on the specified direction.
+is_valid_move Function: Checks if a move to a given position is valid (within maze boundaries and not into a wall).
+solve_maze Function: Recursively solves the maze using depth-first search (DFS), attempting to find a path from the current position to the goal.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions and Recursion: Defined functions for moving the robot and recursively solving the maze.
+Global Keyword: Used global variables to store maze data and robot position.
+Exception Handling: Handled potential errors like invalid directions or moves out of maze boundaries.
+"""
