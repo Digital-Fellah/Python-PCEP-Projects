@@ -1,0 +1,108 @@
+# Magic Calculator: A calculator program that performs basic and bitwise operations.
+
+# Function to perform basic mathematical operations
+def calculator():
+    print("Magic Calculator")
+    print("Enter two numbers and choose an operation.")
+    
+    # Taking input from the user
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+    
+    # Menu for operations
+    print("\nOperations:")
+    print("1. Addition (+)")
+    print("2. Subtraction (-)")
+    print("3. Multiplication (*)")
+    print("4. Division (/)")
+    print("5. Modulus (%)")
+    print("6. Exponentiation (**)")
+    print("7. Integer Division (//)")
+    print("8. Bitwise AND (&)")
+    print("9. Bitwise OR (|)")
+    print("10. Bitwise XOR (^)")
+    print("11. Bitwise NOT (~)")
+    
+    choice = input("\nEnter your choice (1-11): ")
+    
+    # Performing the selected operation
+    if choice == '1':
+        result = num1 + num2  # Addition
+        print(f"\n{num1} + {num2} = {result}")
+    elif choice == '2':
+        result = num1 - num2  # Subtraction
+        print(f"\n{num1} - {num2} = {result}")
+    elif choice == '3':
+        result = num1 * num2  # Multiplication
+        print(f"\n{num1} * {num2} = {result}")
+    elif choice == '4':
+        if num2 == 0:
+            print("\nError: Division by zero")
+        else:
+            result = num1 / num2  # Division
+            print(f"\n{num1} / {num2} = {result}")
+    elif choice == '5':
+        result = num1 % num2  # Modulus
+        print(f"\n{num1} % {num2} = {result}")
+    elif choice == '6':
+        result = num1 ** num2  # Exponentiation
+        print(f"\n{num1} ** {num2} = {result}")
+    elif choice == '7':
+        result = num1 // num2  # Integer Division
+        print(f"\n{num1} // {num2} = {result}")
+    elif choice == '8':
+        result = int(num1) & int(num2)  # Bitwise AND
+        print(f"\n{num1} & {num2} = {result}")
+    elif choice == '9':
+        result = int(num1) | int(num2)  # Bitwise OR
+        print(f"\n{num1} | {num2} = {result}")
+    elif choice == '10':
+        result = int(num1) ^ int(num2)  # Bitwise XOR
+        print(f"\n{num1} ^ {num2} = {result}")
+    elif choice == '11':
+        result = ~int(num1)  # Bitwise NOT
+        print(f"\n~{num1} = {result}")
+    else:
+        print("\nInvalid choice. Please enter a number between 1 and 11.")
+    
+    # End of calculator function
+
+# Call the calculator function to start the program
+calculator()
+
+
+"""
+EXPLANATION OF THE CODE
+
+Function Definition (def calculator():): Defines the main function of the program which handles the calculator logic.
+Printing Initial Messages: Prints out welcome messages and instructions for the user.
+Taking User Input: Reads two numbers from the user which are converted to floating-point numbers.
+Menu for Operations: Displays a menu of operations that the user can choose from.
+Conditional Statements (if, elif, else): Checks the user's choice and performs the corresponding operation based on the input.
+Performing Operations: Executes mathematical calculations (addition, subtraction, multiplication, division, modulus, exponentiation, integer division) and bitwise operations (AND, OR, XOR, NOT) based on user input.
+Error Handling: Handles division by zero error in the division operation.
+Printing Results: Displays the result of the chosen operation.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Compilation and the compiler: Python doesn't need compilation as it is an interpreted language.
+Interpreting and the interpreter: Python code is interpreted line by line.
+Lexis, syntax, and semantics: Demonstrated through correct usage of Python syntax and logical operations.
+Keywords: Use of keywords like def, if, elif, else, print, input.
+Instructions: Implementation of user instructions and program logic.
+Indentation: Proper indentation to define blocks of code.
+Comments: Comments are used to explain different parts of the code for clarity.
+Boolean, integers, floating-point numbers: Handling different types of numerical data.
+Binary, octal, decimal, and hexadecimal numeral systems: Not directly implemented in this project, but could be extended to include.
+Variables: Usage of variables to store user inputs and results.
+Naming conventions: Following PEP-8 guidelines for naming variables and functions.
+Numeric operators: Use of arithmetic operators (+, -, *, /, %, **, //) and bitwise operators (&, |, ^, ~).
+Bitwise operators: Demonstrated with bitwise AND, OR, XOR, and NOT operations.
+Boolean operators: Logical operations (and, or, not) are used for bitwise operations.
+Relational operators: Used in conditional statements (==, !=, >, >=, <, <=).
+Type casting: Conversion between floating-point and integer types.
+Input/output console operations: Use of print() and input() functions for interaction with the user.
+"""
