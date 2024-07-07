@@ -1,0 +1,62 @@
+# Student Grade Tracker
+# This program allows users to track their grades across different subjects.
+
+# Initialize an empty dictionary to store grades for each subject
+grade_book = {}
+
+# Function to add grades for a subject
+def add_grade(subject, grade):
+    if subject in grade_book:
+        grade_book[subject].append(grade)  # If subject exists, add grade to existing list
+    else:
+        grade_book[subject] = [grade]  # If subject doesn't exist, create a new list with the grade
+
+# Function to calculate average grade for a subject
+def calculate_average(subject):
+    if subject in grade_book:
+        grades = grade_book[subject]
+        average = sum(grades) / len(grades)
+        return average
+    else:
+        return "Subject not found"
+
+# Function to display all subjects and their grades
+def display_grades():
+    for subject, grades in grade_book.items():
+        print(f"{subject}: {grades}")
+
+# Example usage:
+add_grade("Math", 85)
+add_grade("Math", 90)
+add_grade("Science", 75)
+add_grade("Science", 80)
+
+display_grades()
+print(f"Average grade for Math: {calculate_average('Math')}")
+print(f"Average grade for Science: {calculate_average('Science')}")
+
+
+"""
+EXPLANATION OF THE CODE
+
+The code starts by initializing an empty dictionary grade_book to store grades for different subjects.
+Two functions add_grade() and calculate_average() are defined to add grades for a subject and calculate the average grade respectively.
+The display_grades() function iterates through the grade_book dictionary and prints each subject along with its list of grades.
+Grades for two subjects, Math and Science, are added using the add_grade() function.
+The display_grades() function is called to print all subjects and their respective grades.
+Finally, the average grades for Math and Science are calculated and printed using the calculate_average() function.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Lists (used indirectly through dictionary values which store lists of grades)
+Dictionaries (used to store grades for each subject and their associated methods like items(), keys(), and values())
+Keys (used to represent subjects in the grade_book dictionary)
+Iterating through dictionaries (done in the display_grades() function)
+Functions (used to encapsulate and reuse code for adding grades, calculating averages, and displaying grades)
+Initializing loops (used in for loop inside display_grades() function)
+Checking the existence of keys (if subject in grade_book statements)
+Methods (append() method used to add grades to existing lists in add_grade() function)
+"""
